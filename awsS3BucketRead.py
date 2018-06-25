@@ -1,3 +1,13 @@
 # Adam Sawyer. 2018. Python-Lambda function
-# This script reads the content of an AWS S3 bucket and prints the results as a formatted .txt to be imported into an .html file
-#TODO Write code
+# Alt-Shift-T : Show Todo Sidebar
+
+import boto3
+import os
+
+def lambda_handler(event, context):
+    client = boto3.client('s3')
+    s3 = boto3.resource('s3')
+    bucketBack = s3.Bucket('MOVIE_BUCKET_NAME')
+    bucketTar = s3.Bucket('TARGET_BUCKET_NAME')
+    obj = client.get_object(Bucket=bucketBack,Key='*') # TODO: resolve client.get_object return issues
+    return obj
