@@ -14,4 +14,6 @@ def lambda_handler(event, context):
     for obj in bucketBack.objects.all():
         files.append(obj.key)
     formatString = ' | '.join(files)
+    
+    print(formatString)
     return formatString
